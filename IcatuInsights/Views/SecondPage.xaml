@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="IcatuInsights.Views.SecondPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:IcatuInsights;assembly=IcatuInsights"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:templates="clr-namespace:IcatuInsights;assembly=IcatuInsights"
+             prism:ViewModelLocator.AutowireViewModel="True">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:ItemTappedEventArgsToItemTappedConverter x:Key="ItemTappedConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<ContentPage.Content>
+		<ListView x:Name="lstViewPessoas"
+		          HasUnevenRows="false"
+		          IsPullToRefreshEnabled="false"
+		          IsRefreshing="false"
+		          ItemsSource="{Binding Persons.Persons}"
+		          RowHeight="66">
+
+			 <ListView.Behaviors>
+                    <converters:EventToCommandBehavior Command="{Binding PersonSelectedCmd}"
+                                              Converter="{StaticResource ItemTappedConverter}"
+                                              EventName="ItemTapped" />
+                </ListView.Behaviors>
+
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<converters:PersonItemTemplate />
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+
+</ContentPage>

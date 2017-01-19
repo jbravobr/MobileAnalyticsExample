@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="IcatuInsights.Views.FirstPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             BackgroundColor="#F8B81F">
+
+	<ContentPage.Content>
+
+		<StackLayout Margin="0,100,0,0"
+		             HorizontalOptions="FillAndExpand"
+		             Spacing="15">
+
+			<StackLayout.Children>
+
+				<Image Aspect="AspectFit"
+				       Source="logo.png" />
+
+				<Entry Margin="20,0,20,0"
+				       Placeholder="Digite o seu usuário"
+				       Text="{Binding Username}" />
+				<Entry Margin="20,0,20,0"
+				       Placeholder="Digite a sua senha"
+				       Text="{Binding Password}" />
+			</StackLayout.Children>
+
+			<StackLayout Margin="0,30,0,0"
+			             HorizontalOptions="CenterAndExpand"
+			             Spacing="0">
+
+				<StackLayout.Children>
+					<Button WidthRequest="100"
+					        HeightRequest="45"
+					        BackgroundColor="Green"
+					        BorderColor="Green"
+					        BorderRadius="3"
+					        BorderWidth="2"
+					        Command="{Binding Logon}"
+					        Text="ENTRAR" />
+				</StackLayout.Children>
+
+			</StackLayout>
+
+		</StackLayout>
+	</ContentPage.Content>
+
+</ContentPage>
