@@ -16,23 +16,34 @@ namespace IcatuInsights.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
+            try
+            {
 
-            base.OnCreate(bundle);
+                TabLayoutResource = Resource.Layout.Tabbar;
+                ToolbarResource = Resource.Layout.Toolbar;
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+                base.OnCreate(bundle);
 
-            //Mobile Center Insights Init
-            MobileCenter.Configure("ead5a287-487d-4248-af2b-773e8e717a32");
+                global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            //Circle Image Init
-            ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
+                //Mobile Center Insights Init
+                MobileCenter.Configure("ead5a287-487d-4248-af2b-773e8e717a32");
 
-            //UserDialogs
-            Acr.UserDialogs.UserDialogs.Init((Activity)Forms.Context);
+                //Circle Image Init
+                ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
 
-            LoadApplication(new App());
+                //UserDialogs
+                Acr.UserDialogs.UserDialogs.Init((Activity)Forms.Context);
+
+                LoadApplication(new App());
+
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
