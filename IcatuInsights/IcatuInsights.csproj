@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -63,6 +63,14 @@
     <Compile Include="Utils\UIFunctions\CustomDialogs.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Plugin.GoogleAnalytics, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ksemenenko.GoogleAnalytics.1.0.2.2\lib\portable-net45+win8+wpa81\Plugin.GoogleAnalytics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.GoogleAnalytics.Abstractions, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ksemenenko.GoogleAnalytics.1.0.2.2\lib\portable-net45+win8+wpa81\Plugin.GoogleAnalytics.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.184-pre1\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -128,25 +136,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Analytics\" />
-    <Folder Include="Analytics\Events\" />
-    <Folder Include="Utils\" />
-    <Folder Include="Utils\EnumFunctions\" />
-    <Folder Include="Models\" />
-    <Folder Include="Utils\AsyncFunctions\" />
-    <Folder Include="Behaviors\" />
-    <Folder Include="Converter\" />
-    <Folder Include="Views\Templates\" />
-    <Folder Include="Utils\StringFunctions\" />
-    <Folder Include="Sytles\" />
-    <Folder Include="Utils\UIFunctions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Views\FirstPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

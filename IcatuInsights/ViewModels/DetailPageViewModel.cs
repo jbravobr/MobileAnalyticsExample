@@ -7,6 +7,7 @@ using PropertyChanged;
 using Prism.Services;
 using Xamarin.Forms;
 using System.IO;
+using Plugin.GoogleAnalytics;
 
 namespace IcatuInsights.ViewModels
 {
@@ -61,6 +62,7 @@ namespace IcatuInsights.ViewModels
 
         public DetailPageViewModel(IPageDialogService pageDialogService)
         {
+            GoogleAnalytics.Current.Tracker.SendView("DetailPage");
             _pageDialogService = pageDialogService;
             GetQuote();
         }

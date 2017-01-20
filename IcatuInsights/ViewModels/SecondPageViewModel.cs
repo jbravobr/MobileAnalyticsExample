@@ -13,6 +13,7 @@ using Xamarin.Forms;
 using Microsoft.Azure.Mobile.Analytics;
 
 using Acr.UserDialogs;
+using Plugin.GoogleAnalytics;
 
 namespace IcatuInsights.ViewModels
 {
@@ -75,6 +76,7 @@ namespace IcatuInsights.ViewModels
 
         public async Task Navigate(Result person, string page)
         {
+            GoogleAnalytics.Current.Tracker.SendEvent(GetEnumDescriptionAttribute.GetDescription(AnalytcsEventsType.PessoaSelecionada), "Pessoa Seleciona", person.Name.FullName);
             // Tracking
             Analytics.TrackEvent(GetEnumDescriptionAttribute.GetDescription(AnalytcsEventsType.PessoaSelecionada),
                                              new Dictionary<string, string> { { "Pessoa seleciona", person.Name.First } });
@@ -90,6 +92,7 @@ namespace IcatuInsights.ViewModels
                                    IUserDialogs userDialogs,
                                    IPageDialogService pageDialogService)
         {
+            GoogleAnalytics.Current.Tracker.SendView("SecondPage");
             _userDialogs = userDialogs;
             _navigationService = navigationService;
             _pageDialogService = pageDialogService;

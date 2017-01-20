@@ -9,6 +9,7 @@ using Microsoft.Azure.Mobile.Analytics;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Acr.UserDialogs;
+using Plugin.GoogleAnalytics;
 
 namespace IcatuInsights.ViewModels
 {
@@ -33,6 +34,8 @@ namespace IcatuInsights.ViewModels
                         await _pageDialogService.DisplayAlertAsync("Usuário/senha inválidos",
                                                              string.Empty,
                                                              "OK");
+
+                        GoogleAnalytics.Current.Tracker.SendEvent(GetEnumDescriptionAttribute.GetDescription(AnalytcsEventsType.UsuarioSenhaEmBranco), string.Empty, string.Empty);
                         // Tracking
                         Analytics.TrackEvent(GetEnumDescriptionAttribute.GetDescription(AnalytcsEventsType.UsuarioSenhaEmBranco),
                                              new Dictionary<string, string> { { string.Empty, string.Empty } });
@@ -47,6 +50,8 @@ namespace IcatuInsights.ViewModels
 
         async Task Navigate(string page)
         {
+
+            GoogleAnalytics.Current.Tracker.SendEvent(GetEnumDescriptionAttribute.GetDescription(AnalytcsEventsType.LoginValido), Username, Password);
             // Tracking
             Analytics.TrackEvent(GetEnumDescriptionAttribute.GetDescription(AnalytcsEventsType.LoginValido),
                                              new Dictionary<string, string> { { Username, Password } });
@@ -63,6 +68,9 @@ namespace IcatuInsights.ViewModels
         }
 
         // XAML Previewer (Comentar o construtor com DI)
-        public FirstPageViewModel() { }
+        public FirstPageViewModel() {
+
+            GoogleAnalytics.Current.Tracker.SendView("FirstPage");
+        }
     }
 }
