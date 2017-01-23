@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace IcatuInsights.Views
 {
@@ -10,4 +11,3 @@ namespace IcatuInsights.Views
         }
     }
 }
-

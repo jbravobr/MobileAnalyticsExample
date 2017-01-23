@@ -15,4 +15,3 @@ namespace IcatuInsights.Views
         }
     }
 }
-

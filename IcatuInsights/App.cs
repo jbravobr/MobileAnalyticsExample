@@ -18,35 +18,43 @@ namespace IcatuInsights
         protected override void OnInitialized()
         {
 
-            GoogleAnalytics.Current.Config.TrackingId = "UA-90605167-1";
-            GoogleAnalytics.Current.Config.AppId = "90605167";
-            GoogleAnalytics.Current.Config.AppName = "MobileAnalyticsExample";
-            GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
-            GoogleAnalytics.Current.InitTracker();
+            try
+			{
+				GoogleAnalytics.Current.Config.TrackingId = "UA-90605167-1";
+				GoogleAnalytics.Current.Config.AppId = "90605167";
+				GoogleAnalytics.Current.Config.AppName = "MobileAnalyticsExample";
+				GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
+				GoogleAnalytics.Current.InitTracker();
 
 
-            // Mobile Center Init
-            MobileCenter.Start(typeof(Analytics), typeof(Crashes));
+				// Mobile Center Init
+				MobileCenter.Start(typeof(Analytics), typeof(Crashes));
 
-            // Enable Analytics
-            Analytics.Enabled = true;
+				// Enable Analytics
+				Analytics.Enabled = true;
 
-            // Enable Crashes
-            Crashes.Enabled = true;
+				// Enable Crashes
+				Crashes.Enabled = true;
 
-            // Start Crashes Thread on Server
-            //Crashes.GenerateTestCrash();
+				// Start Crashes Thread on Server
+				//Crashes.GenerateTestCrash();
 
-            // App First Page Load
-            NavigationService.NavigateAsync(PageNames.FirstPage);
+				// App First Page Load
+				NavigationService.NavigateAsync(PageNames.FirstPage);
+			}
+			catch (System.Exception ex)
+			{
+				throw ex;
+			}
 
-        }
+		}
 
-        protected override void RegisterTypes()
-        {
-            Container.RegisterTypeForNavigation<FirstPage>();
-            Container.RegisterTypeForNavigation<SecondPage>();
-            Container.RegisterTypeForNavigation<DetailPage>();
+		protected override void RegisterTypes()
+		{
+			Container.RegisterTypeForNavigation<FirstPage>();
+			Container.RegisterTypeForNavigation<SecondPage>();
+			Container.RegisterTypeForNavigation<DetailPage>();
+            Container.RegisterTypeForNavigation<BasePageNavigation>();
 
             Container.RegisterInstance(Acr.UserDialogs.UserDialogs.Instance);
         }

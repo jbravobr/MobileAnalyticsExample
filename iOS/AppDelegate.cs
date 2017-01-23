@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
+using Microsoft.Azure.Mobile;
 using UIKit;
 
 namespace IcatuInsights.iOS
@@ -15,6 +12,12 @@ namespace IcatuInsights.iOS
 			global::Xamarin.Forms.Forms.Init ();
 
 			LoadApplication (new App ());
+
+			//Mobile Center Insights Init
+			MobileCenter.Configure("ead5a287-487d-4248-af2b-773e8e717a32");
+
+			//Circle Image Init
+			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
 
 			return base.FinishedLaunching (app, options);
 		}

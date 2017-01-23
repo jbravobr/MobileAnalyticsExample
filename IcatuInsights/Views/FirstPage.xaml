@@ -2,47 +2,65 @@
 <ContentPage x:Class="IcatuInsights.Views.FirstPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:IcatuInsights;assembly=IcatuInsights"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             Title="Login"
              prism:ViewModelLocator.AutowireViewModel="True"
              BackgroundColor="#F8B81F">
 
-	<ContentPage.Content>
+    <ContentPage.Content>
 
-		<StackLayout Margin="0,100,0,0"
-		             HorizontalOptions="FillAndExpand"
-		             Spacing="15">
+        <StackLayout Margin="0,100,0,0"
+                     HorizontalOptions="FillAndExpand"
+                     Spacing="15">
 
-			<StackLayout.Children>
+            <StackLayout.Children>
 
-				<Image Aspect="AspectFit"
-				       Source="logo.png" />
+                <Image Aspect="AspectFit" Source="logo.png" />
 
-				<Entry Margin="20,0,20,0"
-				       Placeholder="Digite o seu usuário"
-				       Text="{Binding Username}" />
-				<Entry Margin="20,0,20,0"
-				       Placeholder="Digite a sua senha"
-				       Text="{Binding Password}" />
-			</StackLayout.Children>
+                <local:CustomEntryRender Margin="20,0,20,0"
+                                         Placeholder="Digite o seu usuário"
+                                         Text="{Binding Username}" />
+                <local:CustomEntryRender Margin="20,0,20,0"
+                                         IsPassword="true"
+                                         Placeholder="Digite a sua senha"
+                                         Text="{Binding Password}" />
+            </StackLayout.Children>
 
-			<StackLayout Margin="0,30,0,0"
-			             HorizontalOptions="CenterAndExpand"
-			             Spacing="0">
+            <StackLayout Margin="0,30,0,0"
+                         HorizontalOptions="CenterAndExpand"
+                         Spacing="0">
 
-				<StackLayout.Children>
-					<Button WidthRequest="100"
-					        HeightRequest="45"
-					        BackgroundColor="Green"
-					        BorderColor="Green"
-					        BorderRadius="3"
-					        BorderWidth="2"
-					        Command="{Binding Logon}"
-					        Text="ENTRAR" />
-				</StackLayout.Children>
+                <StackLayout.Children>
+                    <Button BackgroundColor="Green"
+                            BorderColor="Green"
+                            BorderRadius="3"
+                            BorderWidth="2"
+                            Command="{Binding Logon}"
+                            Text="ENTRAR">
 
-			</StackLayout>
+                        <Button.WidthRequest>
+                            <OnPlatform x:TypeArguments="x:Double"
+                                        Android="155"
+                                        iOS="100" />
+                        </Button.WidthRequest>
+                        <Button.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double"
+                                        Android="65"
+                                        iOS="45" />
+                        </Button.HeightRequest>
+                        <Button.TextColor>
+                            <OnPlatform x:TypeArguments="Color"
+                                        Android="Black"
+                                        iOS="Black" />
+                        </Button.TextColor>
 
-		</StackLayout>
-	</ContentPage.Content>
+                    </Button>
+                </StackLayout.Children>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

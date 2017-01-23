@@ -7,7 +7,7 @@ namespace IcatuInsights.Views
         public DetailPage()
         {
             InitializeComponent();
+			NavigationPage.SetHasBackButton(this, true);
         }
     }
 }
-

@@ -3,49 +3,46 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
-	<ContentView.Content>
+    <ContentView.Content>
 
-		<Grid Margin="0"
-		      ColumnSpacing="0"
-		      RowSpacing="0">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
+        <Grid Margin="0"
+              ColumnSpacing="0"
+              RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-			<StackLayout Grid.Column="0"
-			             Orientation="Horizontal"
-			             Padding="0,10"
-			             TranslationX="10">
-				<controls:CircleImage Aspect="AspectFill"
-				                      BorderColor="#F8B81F"
-				                      BorderThickness="3"
-				                      Source="{Binding Picture.Medium}">
-					<controls:CircleImage.WidthRequest>
+            <StackLayout Grid.Column="0"
+                         Orientation="Horizontal"
+                         Padding="0,10"
+                         TranslationX="10">
+                <controls:CircleImage Aspect="AspectFill"
+                                      BorderColor="#F8B81F"
+                                      BorderThickness="3"
+                                      Source="{Binding Picture.Medium}">
+                <controls:CircleImage.WidthRequest>
 						<OnPlatform x:TypeArguments="x:Double"
 						            Android="55"
 						            WinPhone="75"
-						            iOS="55" />
+						            iOS="45" />
 					</controls:CircleImage.WidthRequest>
 					<controls:CircleImage.HeightRequest>
 						<OnPlatform x:TypeArguments="x:Double"
 						            Android="55"
 						            WinPhone="75"
-						            iOS="55" />
+						            iOS="40" />
 					</controls:CircleImage.HeightRequest>
 				</controls:CircleImage>
-				<Label VerticalOptions="CenterAndExpand"
-				       FontSize="16"
-				       Text="{Binding Name.FullName}" />
-			</StackLayout>
+                <Label VerticalOptions="CenterAndExpand"
+                       FontSize="16"
+                       Text="{Binding Name.FullName}" />
+            </StackLayout>
 
-			<Image Grid.Column="1"
-			       WidthRequest="20"
-			       HeightRequest="20"
-			       HorizontalOptions="End"
-			       Source="arrow" />
+            <Image Grid.Column="1"
+                   HorizontalOptions="End"
+                   Source="arrow" />
+        </Grid>
 
-		</Grid>
-
-	</ContentView.Content>
+    </ContentView.Content>
 </ContentView>

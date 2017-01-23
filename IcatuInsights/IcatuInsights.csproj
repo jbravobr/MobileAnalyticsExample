@@ -38,7 +38,6 @@
     <Compile Include="Analytics\Events\AnalytcsEventsType.cs" />
     <Compile Include="Utils\EnumFunctions\EnumDescriptionAttribute.cs" />
     <Compile Include="Utils\EnumFunctions\GetEnumDescriptionAttribute.cs" />
-    <Compile Include="ViewModels\SecondPageViewModel.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Views\SecondPage.xaml.cs">
       <DependentUpon>SecondPage.xaml</DependentUpon>
@@ -61,6 +60,13 @@
     <Compile Include="Converter\ItemTappedEventArgsToItemTappedConverter %28copy%29.cs" />
     <Compile Include="Models\Quotes.cs" />
     <Compile Include="Utils\UIFunctions\CustomDialogs.cs" />
+    <Compile Include="Utils\APIConstants.cs" />
+    <Compile Include="Renderes\CustomListViewSeparatorRenderer.cs" />
+    <Compile Include="Renderes\CustomEntryRender.cs" />
+    <Compile Include="Views\BasePageNavigation.xaml.cs">
+      <DependentUpon>BasePageNavigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SecondPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.GoogleAnalytics, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL">
@@ -129,10 +135,10 @@
       <HintPath>..\packages\Splat.1.6.2\lib\Portable-net45+win+wpa81+wp80\Splat.dll</HintPath>
     </Reference>
     <Reference Include="Acr.UserDialogs">
-      <HintPath>..\packages\Acr.UserDialogs.6.3.6\lib\portable-win+net45+wp8+win8+wpa81\Acr.UserDialogs.dll</HintPath>
+      <HintPath>..\packages\Acr.UserDialogs.6.3.7\lib\portable-win+net45+wp8+win8+wpa81\Acr.UserDialogs.dll</HintPath>
     </Reference>
     <Reference Include="Acr.UserDialogs.Interface">
-      <HintPath>..\packages\Acr.UserDialogs.6.3.6\lib\portable-win+net45+wp8+win8+wpa81\Acr.UserDialogs.Interface.dll</HintPath>
+      <HintPath>..\packages\Acr.UserDialogs.6.3.7\lib\portable-win+net45+wp8+win8+wpa81\Acr.UserDialogs.Interface.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +160,12 @@
     <EmbeddedResource Include="Views\DetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\BasePageNavigation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.184-pre1\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.184-pre1\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

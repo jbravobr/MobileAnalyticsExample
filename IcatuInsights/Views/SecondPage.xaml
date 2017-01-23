@@ -3,38 +3,47 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:IcatuInsights;assembly=IcatuInsights"
+             xmlns:local="clr-namespace:IcatuInsights;assembly=IcatuInsights"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:templates="clr-namespace:IcatuInsights;assembly=IcatuInsights"
+             Title="Pessoas"
              prism:ViewModelLocator.AutowireViewModel="True">
 
-	<ContentPage.Resources>
-		<ResourceDictionary>
-			<converters:ItemTappedEventArgsToItemTappedConverter x:Key="ItemTappedConverter" />
-		</ResourceDictionary>
-	</ContentPage.Resources>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <templates:ItemTappedEventArgsToItemTappedConverter x:Key="ItemTappedConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-	<ContentPage.Content>
-		<ListView x:Name="lstViewPessoas"
-		          HasUnevenRows="false"
-		          IsPullToRefreshEnabled="false"
-		          IsRefreshing="false"
-		          ItemsSource="{Binding Persons.Persons}"
-		          RowHeight="66">
+    <ContentPage.Content>
+        <templates:CustomListViewSeparatorRenderer x:Name="lstViewPessoas"
+                                                   Margin="0,20,0,0"
+                                                   HasUnevenRows="false"
+                                                   IsPullToRefreshEnabled="false"
+                                                   IsRefreshing="false"
+                                                   ItemsSource="{Binding Persons.Persons}"
+                                                   RowHeight="66">
 
-			 <ListView.Behaviors>
-                    <converters:EventToCommandBehavior Command="{Binding PersonSelectedCmd}"
-                                              Converter="{StaticResource ItemTappedConverter}"
-                                              EventName="ItemTapped" />
-                </ListView.Behaviors>
+            <templates:CustomListViewSeparatorRenderer>
+                <x:Arguments>
+                    <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                </x:Arguments>
+            </templates:CustomListViewSeparatorRenderer>
 
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<ViewCell>
-						<converters:PersonItemTemplate />
-					</ViewCell>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
-	</ContentPage.Content>
+            <templates:CustomListViewSeparatorRenderer.Behaviors>
+                <templates:EventToCommandBehavior Command="{Binding PersonSelectedCmd}"
+                                                  Converter="{StaticResource ItemTappedConverter}"
+                                                  EventName="ItemTapped" />
+            </templates:CustomListViewSeparatorRenderer.Behaviors>
+
+            <templates:CustomListViewSeparatorRenderer.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <templates:PersonItemTemplate />
+                    </ViewCell>
+                </DataTemplate>
+            </templates:CustomListViewSeparatorRenderer.ItemTemplate>
+        </templates:CustomListViewSeparatorRenderer>
+    </ContentPage.Content>
 
 </ContentPage>

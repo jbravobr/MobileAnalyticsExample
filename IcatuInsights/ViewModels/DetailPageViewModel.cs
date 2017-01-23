@@ -26,9 +26,9 @@ namespace IcatuInsights.ViewModels
                 if (App._httpClient == null)
                     App._httpClient = HttpAccessInstance.GetClient;
 
-                HttpAccessInstance.SetBaseURL("http://api.forismatic.com/api/1.0/");
+                HttpAccessInstance.SetBaseURL(APIConstants.QUOTE_API);
 
-                var data = await App._httpClient.GetAsync("?method=getQuote&key=457653&format=json&lang=en");
+                var data = await App._httpClient.GetAsync(APIConstants.QUOTE_API_PARAMS);
                 if (!data.IsSuccessStatusCode)
                     throw new InvalidOperationException("Erro ao acessar API de citações");
 

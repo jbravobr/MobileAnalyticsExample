@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace IcatuInsights.Droid
 {
-    [Activity(Label = "IcatuInsights.Droid",
+    [Activity(Label = "Icatu Insights",
               Icon = "@drawable/icon",
               Theme = "@style/MyTheme",
               MainLauncher = true,
